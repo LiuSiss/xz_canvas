@@ -1,0 +1,15 @@
+{
+    "block" : "images/block.gif",
+    "wall" : "images/wall.png",
+    "box" : "images/box.png",
+    "ball" : "images/ball.png",
+    "up" : "images/up.png",
+    "down" : "images/down.png",
+    "left" : "images/left.png",
+    "right" : "images/right.png",
+    "button_play" : "images/button_play.png",
+    "tip1" : "images/tip1.png",
+    "right_button" : "images/1.jpg",
+    "false_button" : "images/2.jpg",
+    "start" :"images/start.jpg"
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>推箱子</title>
+    <style type="text/css">
+        .box{
+            width: 1000px;
+            overflow: hidden;
+        }
+        .box canvas{
+            float: left;
+
+            border: 1px solid #000;
+            overflow:hidden;
+        }
+        .box table{
+            float: left;
+            margin-left:8px;
+            border-collapse: collapse;
+        }
+        .box table,tr,td{
+            border:1px solid #333;
+            line-height: 12px;
+            text-align: center;
+        }
+        .box td{
+            width:12px;
+            height:12px;
+        }
+        input{
+            margin-top:10px;
+            font-size:16px;
+            font-family: "微软雅黑";
+            float: left;
+            margin-left:10px;
+        }
+        select{
+            float: left;
+            margin-left:10px;
+            margin-top:10px;
+            width: 100px;
+        }
+        audio{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio src="step.wav" controls id="step_radio"></audio>
+    <audio src="sucess.wav" controls id="sucess_radio"></audio>
+    <audio src="sucess1.wav" controls id="sucess1_radio"></audio>
+    <audio src="tip.wav" controls id="tip_radio"></audio>
+    <audio src="restart.wav" controls id="restart_radio"></audio>
+    <audio src="music.mp3" controls id="music"></audio>
+    <div class="box">
+        <canvas width="560px" height="560px" id="mycanvas">浏览器版本太低，请升级浏览器</canvas>
+
+        <!-- <table id="tiaoshi1">
+            <caption>code矩阵</caption>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+        </table>
+        <table id="tiaoshi2">
+            <caption>code临时矩阵</caption>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+        </table> -->
+    </div>
+    <input type="button" value="重新开始" id="restart">
+    <input type="button" value="下一关" id="next">
+    <input type="button" value="后退一步" id="regret">
+
+
+
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/SimpleJavaScriptInheritance.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="js/Map.js"></script>
+    <script src="js/Actors.js"></script>
+    <script src="js/Background.js"></script>
+    <script src="js/People.js"></script>
+    <script src="js/Box.js"></script>
+    <script src="js/Ball.js"></script>
+    <script src="js/Wall.js"></script>
+    <script src="js/Scene.js"></script>
+    <script src="js/MapEdit.js"></script>
+    <script >
+        var game = new Game("mycanvas");
+        var next= document.getElementById("next");
+        var restart= document.getElementById("restart");
+        var regret= document.getElementById("regret");
+        var step_radio= document.getElementById("step_radio");
+        var sucess_radio= document.getElementById("sucess_radio");
+        var sucess1_radio= document.getElementById("sucess1_radio");
+        var tip_radio= document.getElementById("tip_radio");
+        var restart_radio= document.getElementById("restart_radio");
+        var music= document.getElementById("music");
+    </script>
+</body>
+</html>
